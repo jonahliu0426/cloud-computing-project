@@ -19,7 +19,7 @@ export function getDefaultUser() {
 export const defaultPost = {
   id: uuid(),
   likes: 10,
-  caption: `<span class="">Do you know the 10 JavaScript concepts you need to learn React? 🤔⚛️👇<br>•<br>•<br>👉 Get the FREE cheatsheet to learn them now: bit.ly/10-js-tips 🔥</span>`,
+  caption: `<span class="">Do you know the web3 and nft are going to be the next big things? 🤔⚛️👇<br>•<br>•<br>👉 Collect and trade great NFTs on: opensea.com 🔥</span>`,
   user: defaultUser,
   media: "https://reedbarger.nyc3.digitaloceanspaces.com/reactbootcamp/post.jpeg",
   comments: [],
@@ -30,7 +30,7 @@ export function getDefaultPost() {
   return {
     id: uuid(),
     likes: 10,
-    caption: `<span class="">Do you know the 10 JavaScript concepts you need to learn React? 🤔⚛️👇<br>•<br>•<br>👉 Get the FREE cheatsheet to learn them now: bit.ly/10-js-tips 🔥</span>`,
+    caption: `<span class="">Do you know the web3 and nft are going to be the next big things? 🤔⚛️👇<br>•<br>•<br>👉 Collect and trade great NFTs on: opensea.com 🔥</span>`,
     user: defaultUser,
     media: "https://reedbarger.nyc3.digitaloceanspaces.com/reactbootcamp/post.jpeg",
     comments: [],
@@ -59,7 +59,7 @@ export const defaultCurrentUser = {
   username: "me",
   name: "myself",
   profile_image: "https://reedbarger.nyc3.digitaloceanspaces.com/reactbootcamp/avatar.png",
-  website: "https://reactbootcamp.com",
+  website: "mybiolink.com",
   email: "me@gmail.com",
   bio: "This is my bio",
   phone_number: "555-555-5555",

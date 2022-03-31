@@ -45,7 +45,6 @@ function EditProfilePage({ history }) {
     "Manage Contacts",
     "Privacy and Security",
     "Login Activity",
-    "Emails from Instagram",
   ];
 
   const drawer = (

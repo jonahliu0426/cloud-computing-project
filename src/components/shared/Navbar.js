@@ -2,7 +2,7 @@ import { AppBar, Avatar, Fade, Grid, Hidden, InputBase, Typography, Zoom } from 
 import React from "react";
 import { useNavbarStyles, WhiteTooltip, RedTooltip } from "../../styles";
 import { Link, useHistory } from 'react-router-dom';
-import logo from '../../images/logo.png'
+import logo from '../../images/enterspace-logo.png'
 import { AddIcon, ExploreActiveIcon, ExploreIcon, HomeActiveIcon, HomeIcon, LikeActiveIcon, LikeIcon, LoadingIcon } from "../../icons";
 import { defaultCurrentUser, getDefaultUser } from "../../data";
 import NotificationTooltip from '../notification/NotificationTooltip';
@@ -45,7 +45,10 @@ const Logo = () => {
     <div className={classes.logoContainer}>
       <Link to="/">
         <div className={classes.logoWrapper}>
-          <img src={logo} alt="Instagram logo" className={classes.logo} />
+          <Typography variant="h5" component="h1">
+            Enter Space
+          </Typography>
+          {/* <img src={logo} alt="Grid logo" className={classes.logo} /> */}
         </div>
       </Link>
     </div>
