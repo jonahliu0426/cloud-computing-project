@@ -34,13 +34,14 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       const user = await signIn(username, password);
-      console.log('user', user.username);
       dispatch({
         type: "SIGN_IN",
         payload: {
           user: user,
         }
       });
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      console.log('user', user.username);
       history.push({
         pathname: `/`,
       })
@@ -103,6 +104,7 @@ const LoginPage = () => {
               />
               <Button
                 variant="contained"
+                style={{ backgroundColor: "#764bbb" }}
                 fullWidth
                 color="primary"
                 className={classes.button}
@@ -133,7 +135,7 @@ const LoginPage = () => {
               Don't have an account?
             </Typography>
             <Link to="/accounts/emailsignup">
-              <Button color="primary" className={classes.button}>
+              <Button style={{ color: "#764bbb" }} className={classes.button}>
                 Sign up
               </Button>
             </Link>
