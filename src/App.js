@@ -18,13 +18,15 @@ import '@aws-amplify/ui-react/styles.css';
 
 Amplify.configure(awsmobile);
 
+const user = localStorage.getItem('currentUser') || {
+  id: null,
+  username: null,
+  name: null,
+  profileImage: null,
+}
+
 export const UserContext = React.createContext({
-  user: {
-    id: null,
-    username: null,
-    name: null,
-    profileImage: null,
-  }
+  user: user
 })
 
 function App({ signOut, signIn, signUp }) {

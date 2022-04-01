@@ -153,12 +153,13 @@ export const useSignUpPageStyles = makeStyles({
     height: "100vh"
   },
   cardHeader: {
-    backgroundImage: `url(${IconSheet})`,
+    backgroundImage: `url(${customizedLogo})`,
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "-98px 0",
-    height: 51,
-    width: 175,
-    margin: "22px auto 12px"
+    backgroundPosition: "0px 33px",
+    height: "71px",
+    width: "228px",
+    margin: "17px auto 20px",
+    backgroundSize: "227px"
   },
   cardHeaderSubHeader: {
     textAlign: "center",
@@ -231,7 +232,7 @@ export const useNavbarStyles = makeStyles(theme => ({
   logo: {
     marginTop: 7,
     maxHeight: "100%",
-    maxWidth: "100%",
+    maxWidth: "68.5%",
     objectFit: "contain"
   },
   input: {

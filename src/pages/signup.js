@@ -62,9 +62,9 @@ function SignUpPage() {
           <Card className={classes.card}>
             <div className={classes.cardHeader} />
             <Typography className={classes.cardHeaderSubHeader}>
-              Sign up to see photos and videos from your friends.
+              Sign up to see photos, videos, and NFTs from your friends.
             </Typography>
-            <LoginWithFacebook color="primary" iconColor="white" variant="contained" />
+            <LoginWithFacebook color="secondary" iconColor="blue" />
             <div className={classes.orContainer}>
               <div className={classes.orLine} />
               <div>
@@ -128,6 +128,7 @@ function SignUpPage() {
                 }}
               />
               <Button
+                style={{ backgroundColor: "#764bbb" }}
                 variant="contained"
                 fullWidth
                 color="primary"
@@ -159,7 +160,7 @@ function SignUpPage() {
               Have an account?
             </Typography>
             <Link to="/accounts/login">
-              <Button color="primary" className={classes.loginButton}>
+              <Button style={{ color: "#764bbb" }} className={classes.loginButton}>
                 Log In
               </Button>
             </Link>
