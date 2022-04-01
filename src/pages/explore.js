@@ -4,6 +4,7 @@ import ExploreSuggestions from "../components/explore/ExploreSuggestions";
 import ExploreGrid from "../components/explore/ExploreGrid";
 
 function ExplorePage() {
+
   return (
     <Layout>
       <ExploreSuggestions />

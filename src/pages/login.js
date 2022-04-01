@@ -6,21 +6,48 @@ import {
   Typography,
   InputAdornment,
 } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SEO from "../components/shared/Seo";
 import { useLoginPageStyles } from "../styles";
 import FacebookIconBlue from "../images/facebook-icon-blue.svg";
 import FacebookIconWhite from "../images/facebook-icon-white.png";
+import signIn from "../components/authentication/signIn";
+import { useHistory } from "react-router-dom";
+import { UserContext } from "../App";
+
 
 const LoginPage = () => {
+  const { state, dispatch } = React.useContext(UserContext);
   const classes = useLoginPageStyles();
-
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = React.useState(false);
+  const history = useHistory();
 
   const handleClickShowPassword = (event) => {
     event.preventDefault()
     setShowPassword(!showPassword)
+  }
+
+  const handleUserSignIn = async (e) => {
+    e.preventDefault();
+    try {
+      const user = await signIn(username, password);
+      console.log('user', user.username);
+      dispatch({
+        type: "SIGN_IN",
+        payload: {
+          user: user,
+        }
+      });
+      history.push({
+        pathname: `/`,
+      })
+    } catch (e) {
+      console.error(e)
+    }
+
   }
 
   // const handleMouseDownPassword = () => setShowPassword(!showPassword)
@@ -40,6 +67,8 @@ const LoginPage = () => {
                 margin="dense"
                 className={classes.textField}
                 autoComplete="username"
+                value={username}
+                onChange={event => setUsername(event.target.value)}
               />
               <TextField
                 fullWidth
@@ -49,6 +78,8 @@ const LoginPage = () => {
                 margin="dense"
                 className={classes.textField}
                 autoComplete="current-password"
+                value={password}
+                onChange={event => setPassword(event.target.value)}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -76,6 +107,7 @@ const LoginPage = () => {
                 color="primary"
                 className={classes.button}
                 type="submit"
+                onClick={handleUserSignIn}
               >
                 Log In
               </Button>

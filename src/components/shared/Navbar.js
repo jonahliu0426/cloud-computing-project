@@ -1,4 +1,4 @@
-import { AppBar, Avatar, Fade, Grid, Hidden, InputBase, Typography, Zoom } from "@material-ui/core";
+import { AppBar, Avatar, Fade, Grid, Hidden, InputBase, Typography, Zoom, Button } from "@material-ui/core";
 import React from "react";
 import { useNavbarStyles, WhiteTooltip, RedTooltip } from "../../styles";
 import { Link, useHistory } from 'react-router-dom';
@@ -8,6 +8,8 @@ import { defaultCurrentUser, getDefaultUser } from "../../data";
 import NotificationTooltip from '../notification/NotificationTooltip';
 import NotificationList from "../notification/NotificationList";
 import { useNProgress } from "@tanem/react-nprogress";
+import { UserContext } from "../../App";
+
 
 
 function Navbar({ minimalNavbar }) {
@@ -125,6 +127,7 @@ const Search = ({ history }) => {
 }
 
 const Links = ({ path }) => {
+  const { state } = React.useContext(UserContext);
   const classes = useNavbarStyles();
   const [showList, setShowList] = React.useState(false);
   const [showTooltip, setShowTooltip] = React.useState(true);
@@ -147,6 +150,7 @@ const Links = ({ path }) => {
     setShowList(false);
   }
 
+  console.log('user', state.user)
 
   return (
     <div className={classes.linksContainer}>
@@ -161,26 +165,38 @@ const Links = ({ path }) => {
         <Link to="/explore">
           {path === '/explore' ? <ExploreActiveIcon /> : <ExploreIcon />}
         </Link>
-        <RedTooltip
-          arrow
-          open={showTooltip}
-          onOpen={handleHideTooltip}
-          TransitionComponent={Zoom}
-          title={<NotificationTooltip />}
-        >
-          <div className={classes.notifications} onClick={handleToggleList}>
-            {showList ? <LikeActiveIcon /> : <LikeIcon />}
-          </div>
-        </RedTooltip>
-        <Link to={`/${defaultCurrentUser.username}`}>
-          <div className={path === `/${defaultCurrentUser.username}` ?
-            classes.profileActive : ""}>
-          </div>
-          <Avatar
-            src={defaultCurrentUser.profile_image}
-            className={classes.profileImage}
-          />
-        </Link>
+        {(state && state.user.username) ? (
+          <>
+            <RedTooltip
+              arrow
+              open={showTooltip}
+              onOpen={handleHideTooltip}
+              TransitionComponent={Zoom}
+              title={<NotificationTooltip />}
+            >
+              <div className={classes.notifications} onClick={handleToggleList}>
+                {showList ? <LikeActiveIcon /> : <LikeIcon />}
+              </div>
+            </RedTooltip>
+            <Link to={`/${state.user.username}`}>
+              <div className={path === `/${state.user.username}` ?
+                classes.profileActive : ""}>
+              </div>
+              <Avatar
+                src={state.user.profile_image}
+                className={classes.profileImage}
+              />
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link to={`/accounts/login`}>
+              <Button>
+                Login
+              </Button>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   )
@@ -210,6 +226,10 @@ const Progress = ({ isAnimating }) => {
       </div>
     </div>
   )
+}
+
+const LoginButton = () => {
+
 }
 
 export default Navbar;
