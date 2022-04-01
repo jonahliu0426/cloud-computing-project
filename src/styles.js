@@ -2,6 +2,7 @@ import { makeStyles, withStyles, Tooltip } from "@material-ui/core";
 import IconSheet from "./images/icon-sheet.png";
 import IconSheet2 from "./images/icon-sheet-2.png";
 import NFTIconSheet from "./images/nft-tag-icon.png";
+import customizedLogo from "./images/customized-logo.png";
 
 /* Feed page: /pages/feed.js */
 export const useFeedPageStyles = makeStyles(theme => ({
@@ -88,12 +89,13 @@ export const useLoginPageStyles = makeStyles({
     height: "100vh"
   },
   cardHeader: {
-    backgroundImage: `url(${IconSheet})`,
+    backgroundImage: `url(${customizedLogo})`,
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "-98px 0",
-    height: 51,
-    width: 175,
-    margin: "22px auto 12px"
+    backgroundPosition: "0px 33px",
+    height: "71px",
+    width: "228px",
+    margin: "17px auto 20px",
+    backgroundSize: "227px"
   },
   textField: {
     marginBottom: 6
