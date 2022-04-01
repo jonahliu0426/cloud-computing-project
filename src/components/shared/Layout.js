@@ -3,7 +3,7 @@ import { useLayoutStyles } from "../../styles";
 import SEO from "./Seo";
 import Navbar from "./Navbar"
 
-function Layout({ minimalNavbar = false, children, title, marginTop = 60 }) {
+function Layout({ minimalNavbar = false, children, title, marginTop = 60, user }) {
   const classes = useLayoutStyles();
 
   return (

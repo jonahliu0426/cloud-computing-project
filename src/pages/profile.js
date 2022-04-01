@@ -8,9 +8,12 @@ import { GearIcon } from "../icons";
 import FollowButton from "../components/shared/FollowButton";
 import { Link } from "react-router-dom";
 import ProfileTabs from "../components/profile/ProfileTabs";
+import { UserContext } from "../App";
+import { useHistory } from "react-router-dom";
 
 
-function ProfilePage() {
+function ProfilePage({ signOut, user }) {
+  const { state, dispatch } = React.useContext(UserContext)
   const isOwner = true;
   const classes = useProfilePageStyles();
   const [showOptionMenu, setShowOptionMenu] = React.useState(false);
@@ -24,7 +27,7 @@ function ProfilePage() {
   }
 
   return (
-    <Layout title={`${defaultCurrentUser.name} @${defaultCurrentUser.username}`}>
+    <Layout title={`${state.user?.name} @${state.user?.username}`}>
       <div className={classes.container}>
         <Hidden xsDown>
           <Card className={classes.cardLarge}>
@@ -56,7 +59,7 @@ function ProfilePage() {
             <PostCountSection user={defaultCurrentUser} />
           </Card>
         </Hidden>
-        {showOptionMenu && <OptionsMenu handleCloseMenu={handleCloseMenu} />}
+        {showOptionMenu && <OptionsMenu signOut={signOut} handleCloseMenu={handleCloseMenu} />}
         <ProfileTabs user={defaultCurrentUser} isOwner={isOwner} />
       </div>
     </Layout>
@@ -233,12 +236,27 @@ const NameBioSection = ({ user }) => {
   )
 }
 
-const OptionsMenu = ({ handleCloseMenu }) => {
+const OptionsMenu = ({ handleCloseMenu, signOut }) => {
+  const history = useHistory();
+  const { state, dispatch } = React.useContext(UserContext);
   const classes = useProfilePageStyles();
   const [showLogOutMessage, setShowLogOutMessage] = React.useState(false);
 
-  const handleClickLogOut = () => {
-    setShowLogOutMessage(true)
+  const handleUserSignOut = () => {
+    dispatch({
+      type: "SIGN_OUT",
+      payload: {
+        user: {
+          id: null,
+          username: null,
+          name: null,
+          profileImage: null,
+        }
+      }
+    });
+    history.push({
+      pathname: '/',
+    })
   }
 
   return (
@@ -264,7 +282,7 @@ const OptionsMenu = ({ handleCloseMenu }) => {
           <OptionsItem text="Authorized Apps" />
           <OptionsItem text="Notification" />
           <OptionsItem text="Privacy and Security" />
-          <OptionsItem text="Log Out" onClick={handleClickLogOut} />
+          <OptionsItem text="Log Out" onClick={handleUserSignOut} />
           <OptionsItem text="Cancel" onClick={handleCloseMenu} />
         </>
       )}
