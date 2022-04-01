@@ -272,7 +272,7 @@ const OptionsMenu = ({ handleCloseMenu, signOut }) => {
         <DialogTitle className={classes.dialogTitle}>
           Logging Out
           <Typography color="textSecondary">
-            You need to log back in to continue using Instagram.
+            You need to log back in to continue using EnterSpace.
           </Typography>
         </DialogTitle>
       ) : (
