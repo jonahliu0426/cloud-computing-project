@@ -21,4 +21,5 @@ amplifytools.xcconfig
 **.sample
 .DS_Store
 src/components/.DS_Store
+src/.DS_Store
 #amplify-do-not-edit-end
