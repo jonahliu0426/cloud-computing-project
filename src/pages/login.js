@@ -102,6 +102,7 @@ const LoginPage = () => {
                 }}
               />
               <Button
+                style={{ backgroundColor: "#764bbb" }}
                 variant="contained"
                 fullWidth
                 color="primary"
@@ -133,7 +134,7 @@ const LoginPage = () => {
               Don't have an account?
             </Typography>
             <Link to="/accounts/emailsignup">
-              <Button color="primary" className={classes.button}>
+              <Button style={{ color: "#764bbb" }} className={classes.button}>
                 Sign up
               </Button>
             </Link>
